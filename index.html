@@ -41,7 +41,7 @@
 </head>
 <body>
 
-  <style>
+<style>
     .div-1 {
         background-color: rgb(244, 249, 250);
     }
@@ -60,8 +60,82 @@
     display: flex;
     align-items: center;
     justify-content: center;     
-    text-align: justify          
+    text-align: justify;      
   }
+  @keyframes move {
+    0% {
+        opacity: 0;
+    }
+    0.6% {
+        opacity: 0;
+    }
+
+    2.4% {
+        opacity: 1;
+    }
+
+    48.5% {
+    opacity: 1;
+    }
+
+    49.7% {
+      opacity: 0;
+    }
+    50.3% {
+      opacity: 0;
+    }
+
+    52.1% {
+      opacity: 1;
+    }
+
+    95% {
+        opacity: 1;
+    }
+
+    98.7% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes move_text {
+    0% {
+        opacity: 0;
+    }
+    2% {
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    45% {
+    opacity: 1;
+    }
+
+    49% {
+      opacity: 0;
+    }
+    51% {
+      opacity: 0;
+    }
+
+    59% {
+      opacity: 1;
+    }
+
+    96% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
 </style>
 
 
@@ -193,9 +267,9 @@
       <div class= "gallery">
 
         <div class="imgtext">
-          <img src="static/images/data/1.jpg" style="float: left; margin: 10px; aspect-ratio: 16 / 11;" width="300"  id="data1">
+          <img src="static/images/data/1.jpg" style="float: left; margin: 10px; aspect-ratio: 16 / 11;  animation:move 30s infinite" width="300" ; id="data1">
           <p>
-          <div id="long_caption1">
+          <div style="animation:move_text 10s infinite; " id="long_caption1">
  
             
             In the image, a person's finger is seen pointing towards a cat's nose. The cat, with its fur in shades of gray and white, is looking up at the finger with its mouth slightly open, as if curious or interested in the action. The background is a plain white wall, providing a stark contrast to the subjects in the foreground. The cat's position relative to the finger suggests it's being the center of attention, possibly for a playful interaction or a trick. The image captures a moment of connection between the person and the cat, highlighting the curiosity and engagement of the feline.
@@ -247,9 +321,8 @@
 
       
         <div class="imgtext">
-          <img src="static/images/data/3.jpg" style="float: left; margin: 10px; aspect-ratio: 16 / 11;" width="300"  id="data2">
           <p>
-          <div id="long_caption2">
+          <div style="animation:move_text 10s infinite; " id="long_caption2">
  
             
             The image captures a lively scene at a beach. The beach is nestled against a rocky cliff, which is adorned with patches of green vegetation. The water surrounding the beach is a stunning turquoise color, reflecting the clear blue sky above. There are several people enjoying the beach, some are frolicking in the water while others are sunbathing on the sand. The beach is not just a place for relaxation but also a place for adventure, as evidenced by the presence of a few boats in the water.The image is taken from a high vantage point, providing a panoramic view of the beach and the surrounding landscape. This perspective allows us to appreciate the vastness of the beach and the expansive water body. The relative positions of the objects suggest a spacious and uncrowded beach, with ample room for everyone to enjoy their day.
@@ -294,15 +367,15 @@
             }, 5000)
         </script>
         </p>
-        
+        <img src="static/images/data/3.jpg" style="float: right; margin: 10px; aspect-ratio: 16 / 11;  animation:move 30s infinite;" width="300"  id="data2">
 
         </div>
 
 
         <div class="imgtext">
-          <img src="static/images/data/5.jpg" style="float: left; margin: 10px; aspect-ratio: 16 / 11;" width="300"  id="data3">
+          <img src="static/images/data/5.jpg" style="float: left; margin: 10px; aspect-ratio: 16 / 11;  animation:move 30s infinite;" width="300"  id="data3">
           <p>
-          <div id="long_caption3">
+          <div style="animation:move_text 10s infinite; " id="long_caption3">
  
             
             The image features a white and pink double-decker bus traveling down a city street. The bus has two levels, making it a double-decker vehicle. It is parked at the side of the road, likely waiting for passengers to board or disembark.  In the background, there are several other vehicles, including cars, trucks, and motorcycles, adding to the bustling atmosphere of the urban setting.'
