@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LoTLIP</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+
+</head>
+<body>
+
+  <style>
+    .div-1 {
+        background-color: rgb(244, 249, 250);
+    }
+    
+    .div-2 {
+    	background-color: #adb1bf;
+    }
+    
+    .div-3 {
+    	background-color: #FBD603;
+    }
+</style>
+
+<style>
+  .imgtext {
+    display: flex;
+    align-items: center;
+    justify-content: center;     
+    text-align: justify          
+  }
+</style>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">LoTLIP: Improving Language-Image Pre-training for Long Text Understanding</h1>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">
+              <a href="https://wuw2019.github.io/">Wei Wu</a><sup>1,</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://zkcys001.github.io/">Kecheng Zheng</a><sup>2,</sup>,
+              </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=dNhzCu4AAAAJ&hl=zh-CN">Shuailei Ma</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=ILpxpfwAAAAJ&hl=zh-CN">Fan Lu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=x_0spxgAAAAJ&hl=en">Yuxin Guo</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=en&user=rQKkIykAAAAJ">Yifei Zhang</a><sup>5</sup>,
+            </span>
+            <span class="author-block">
+                <a href="http://www.cad.zju.edu.cn/home/chenwei/">Wei Chen</a><sup>6</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=en&user=11HDEbkAAAAJ">Qingpei Guo</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://shenyujun.github.io/">Yujun Shen</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://zhas-group.pages.dev/author/%E6%9F%A5%E6%AD%A3%E5%86%9B/">Zheng-Jun Zha</a><sup>1</sup>,
+            </span>
+          </div>
+          <br/>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Science and Technology of China,</span>
+            <span class="author-block"><sup>2</sup>Ant Group,</span>
+            <span class="author-block"><sup>3</sup>Northeastern University, China,</span>
+            <span class="author-block"><sup>4</sup>Institute of Automation, Chinese Academy of Sciences,</span>
+            <span class="author-block"><sup>5</sup>Shanghai Jiao Tong University,</span>
+            <span class="author-block"><sup>6</sup>Zhejiang University</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div-1">
+  <br/>
+  <div style="display: flex; justify-content: center; text-align: justify; ">
+    
+  <div class="column is-four-fifths">
+  <p>
+    Understanding long text is of great demands in practice but beyond the reach of most language-image pre-training (LIP) models.
+    In this work, we empirically confirm that the key reason causing such an issue is that the training images are usually paired with short captions, leaving certain tokens easily overshadowed by salient tokens. 
+    Towards this problem, our initial attempt is to relabel the data with <strong>long captions</strong>, however, directly learning with which may lead to performance degradation in understanding short text (<em>e.g.</em>, in the image classification task).
+    Then, after incorporating corner tokens to aggregate diverse textual information, we manage to help the model catch up to its original level of short text understanding yet greatly enhance its capability of long text understanding.
+    We further look into whether the model can continuously benefit from longer captions and notice a clear trade-off between the performance and the efficiency.
+    Finally, we validate the effectiveness of our approach using a self-constructed large-scale dataset, which consists of <strong>100M</strong> long caption oriented text-image pairs.
+    It is noteworthy that, on the task of long-text image retrieval, we beat the second competitor with 11.1% improvement (<em>i.e.</em>, from 72.62% to 83.72%).
+    We will release the code, the model, and the new dataset to facilitate the reproducibility and further research.
+  </p>
+</div>
+</div>
+
+<div class="column has-text-centered">
+  <div class="publication-links">
+    <!-- PDF Link. -->
+    <span class="link-block">
+      <a href="https://arxiv.org/pdf/2307.15049"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <i class="fas fa-file-pdf"></i>
+        </span>
+        <span>Paper</span>
+      </a>
+    </span>
+    <!-- Code Link. -->
+    <span class="link-block">
+      <a href="https://github.com/wuw2019/R-AMT"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <i class="fab fa-github"></i>
+        </span>
+        <span>Code</span>
+        </a>
+    </span>
+
+    <span class="link-block">
+      <a href="https://github.com/wuw2019/R-AMT"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <i class="fa fa-table"></i>
+        </span>
+        <span>Dataset</span>
+        </a>
+    </span>
+  </div>
+</div>
+</div>
+
+
+<section class="section">
+  <!-- Paper Pipeline. -->
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Detailed Texts of Real Images (Dora) Dataset</h2>
+      <p style="font-size:20px; ">
+        InstructBLIP, LLAVA, and ShareGPT4V are utilized to generate diverse long texts for <strong>100M</strong> images.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+  <!-- <div class="div-1"> -->
+    <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <div class= "gallery">
+
+        <div class="imgtext">
+          <img src="static/images/data/1.jpg" style="float: left; margin: 10px; aspect-ratio: 16 / 11;" width="300"  id="data1">
+          <p>
+          <div id="long_caption1">
+ 
+            
+            In the image, a person's finger is seen pointing towards a cat's nose. The cat, with its fur in shades of gray and white, is looking up at the finger with its mouth slightly open, as if curious or interested in the action. The background is a plain white wall, providing a stark contrast to the subjects in the foreground. The cat's position relative to the finger suggests it's being the center of attention, possibly for a playful interaction or a trick. The image captures a moment of connection between the person and the cat, highlighting the curiosity and engagement of the feline.
+         
+        </div>
+        <script>
+            const title = document.getElementById("long_caption1");
+            var texts = [
+                "In the image, a person's finger is seen pointing towards a cat's nose. The cat, with its fur in shades of gray and white, is looking up at the finger with its mouth slightly open, as if curious or interested in the action. The background is a plain white wall, providing a stark contrast to the subjects in the foreground. The cat's position relative to the finger suggests it's being the center of attention, possibly for a playful interaction or a trick. The image captures a moment of connection between the person and the cat, highlighting the curiosity and engagement of the feline.",
+                "In the image, there are several objectively existing and visible objects with attributes. These include:\n1. A cat: The main subject of the image is a gray and white cat, which is being fed by a person's finger.\n2. The person's hand: The person's hand is visible in the image, holding the finger that is feeding the cat.\n3. The cat's mouth: The cat's mouth is open as it receives the food from the person's finger.\n4. The cat's teeth: The cat's teeth are visible as it opens its mouth to receive the food from the person's finger.\n5. The person's fingertip: The person's fingertip is touching the cat's mouth, demonstrating the act of feeding the cat.\n6. The cat's fur: The cat's fur is visible in the image, contributing to the overall visual representation of the scene.",
+                "The image features a cat with a long whisker, sitting on a white surface and looking up at a person's hand. The person is gently touching the cat's nose with their index finger, possibly petting or teasing the cat. The cat appears to be enjoying the interaction, as it is looking up at the person's hand and possibly purring. The scene captures a moment of bonding between the cat and the person.",
+                
+                "The image features a small white house with a wooden deck, where a man and a woman are standing. The man is holding a backpack, and the woman is holding a handbag. They appear to be engaged in conversation or preparing to leave the house.   In the background, there is a car parked nearby, and a potted plant can be seen close to the house. The scene also includes a few chairs, one near the center of the deck and another closer to the right side. A dining table is located near the center of the deck, and a bottle is placed on the table.",
+                "In the image, there are several visible objects that can be identified. These include:\n1. A small blue house or mobile home, which serves as the main subject of the scene.\n2. Two people, a man and a woman, who are standing on the porch or deck of the house.\n3. Several potted plants, which add a touch of nature and greenery to the surroundings.\n4. A bottle, possibly a water bottle, which one of the people is carrying.\n5. Chairs, which can be seen on the porch or deck, providing seating options for the people.\nThese objectively existing and visible objects contribute to the overall atmosphere and setting of the scene. The presence of the house, people, plants, and a water bottle adds depth and context to the image, making it more engaging and visually appealing.",
+                "In the image, a man and a woman are seen walking towards a white trailer home. The man, dressed in a blue shirt, is carrying a yellow bag, while the woman, wearing a striped shirt, is holding a green bag. The trailer home, which is the main focus of the image, is situated on a wooden deck. A green plant is growing in front of the deck, adding a touch of nature to the scene. The trailer home is surrounded by trees, creating a serene and peaceful atmosphere. The image does not contain any text. The relative positions of the objects are such that the man and woman are in the foreground, the trailer home is in the middle ground, and the trees are in the background. The image captures a moment of everyday life, with the man and woman possibly arriving at their destination."
+              ];
+
+            var images = [
+                "static/images/data/1.jpg",
+                "static/images/data/2.jpg"
+            ];
+
+            let currentIndex = 1;
+            let imagecount = 1
+
+            setInterval(() => {
+
+
+              title.innerHTML= texts[currentIndex];   
+              currentIndex++;
+
+              if (currentIndex%3 === 1){
+                document.getElementById("data1").src = images[imagecount];
+                imagecount++;
+              }
+
+
+              if (currentIndex === 6){
+                imagecount = 0;
+                currentIndex = 0;
+              }
+
+            }, 5000)
+        </script>
+        </p>
+        
+
+        </div>
+
+      
+        <div class="imgtext">
+          <img src="static/images/data/3.jpg" style="float: left; margin: 10px; aspect-ratio: 16 / 11;" width="300"  id="data2">
+          <p>
+          <div id="long_caption2">
+ 
+            
+            The image captures a lively scene at a beach. The beach is nestled against a rocky cliff, which is adorned with patches of green vegetation. The water surrounding the beach is a stunning turquoise color, reflecting the clear blue sky above. There are several people enjoying the beach, some are frolicking in the water while others are sunbathing on the sand. The beach is not just a place for relaxation but also a place for adventure, as evidenced by the presence of a few boats in the water.The image is taken from a high vantage point, providing a panoramic view of the beach and the surrounding landscape. This perspective allows us to appreciate the vastness of the beach and the expansive water body. The relative positions of the objects suggest a spacious and uncrowded beach, with ample room for everyone to enjoy their day.
+
+        </div>
+        <script>
+            const title2 = document.getElementById("long_caption2");
+            var texts2 = [
+            "The image captures a lively scene at a beach. The beach is nestled against a rocky cliff, which is adorned with patches of green vegetation. The water surrounding the beach is a stunning turquoise color, reflecting the clear blue sky above. There are several people enjoying the beach, some are frolicking in the water while others are sunbathing on the sand. The beach is not just a place for relaxation but also a place for adventure, as evidenced by the presence of a few boats in the water.The image is taken from a high vantage point, providing a panoramic view of the beach and the surrounding landscape. This perspective allows us to appreciate the vastness of the beach and the expansive water body. The relative positions of the objects suggest a spacious and uncrowded beach, with ample room for everyone to enjoy their day.",
+            "In the image, there are several visible objects that can be identified based on their attributes. These objects include: 1. People: A group of people is present on the beach, engaging in various activities such as swimming, sunbathing, or simply enjoying the scenery. 2. Sand: The beach is covered with sand, providing a suitable environment for relaxation and recreational activities. 3. Water: There is a body of water near the beach, which could be the ocean, a lagoon, or another type of body of water. 4. Island: An island is visible in the distance, creating a picturesque backdrop for the beach scene. 5. Cliffs: Rocky cliffs can be seen in the background, adding to the natural beauty and diversity of the landscape. These objectively existing and visible objects contribute to the overall aesthetic and atmosphere of the scene.",
+            "The image depicts a beautiful beach scene with a group of people enjoying their time by the ocean. There are at least 13 people scattered across the beach, some standing closer to the water while others are further back. The beach is lined with a rocky shoreline, adding to the picturesque setting.  In addition to the people, there are a couple of boats visible in the water, one near the center of the scene and another closer to the right side. The overall atmosphere of the beach is lively and inviting, with people taking advantage of the sunny day to relax and enjoy the sunshine.",
+            "The image captures a serene moment in nature, featuring a white Labrador Retriever dog as the main subject. The dog is lying on its side on a bed of leaves and grass, its body oriented towards the left side of the frame. Its head is raised, and it gazes directly into the camera, creating a sense of connection with the viewer. The dog's white fur stands out against the greenery, and its brown nose adds a touch of color to its otherwise monochromatic appearance. The background is a blur of more leaves and grass, emphasizing the dog as the focal point of the image. The overall composition suggests a peaceful, outdoor setting.",
+            "The image features a white dog lying on the ground in a grassy area. The dog is positioned in the center of the scene, with its body stretched out, appearing relaxed and comfortable. The grassy area is surrounded by a few leaves scattered around, adding to the natural setting. The dog seems to be enjoying its time outdoors, possibly taking a break from playing or exploring.",
+            "The image features a large white dog lying on the ground in a grassy area. The dog is positioned towards the left side of the scene, and its body takes up a significant portion of the image.  In addition to the main dog, there are several smaller dogs scattered throughout the scene. Some of these smaller dogs can be found closer to the right side of the image, while others are more spread out across the grassy area. Overall, the scene captures a relaxed moment with multiple dogs enjoying their time in the outdoors."
+          ];
+
+            var images2 = [
+                "static/images/data/3.jpg",
+                "static/images/data/4.jpg"
+            ];
+
+            let currentIndex2 = 1;
+            let imagecount2 = 1
+
+            setInterval(() => {
+
+
+              title2.innerHTML= texts2[currentIndex2];   
+              currentIndex2++;
+
+              if (currentIndex2%3 === 1){
+                document.getElementById("data2").src = images2[imagecount2];
+                imagecount2++;
+              }
+
+
+              if (currentIndex2 === 6){
+                imagecount2 = 0;
+                currentIndex2 = 0;
+              }
+
+            }, 5000)
+        </script>
+        </p>
+        
+
+        </div>
+
+
+        <div class="imgtext">
+          <img src="static/images/data/5.jpg" style="float: left; margin: 10px; aspect-ratio: 16 / 11;" width="300"  id="data3">
+          <p>
+          <div id="long_caption3">
+ 
+            
+            The image features a white and pink double-decker bus traveling down a city street. The bus has two levels, making it a double-decker vehicle. It is parked at the side of the road, likely waiting for passengers to board or disembark.  In the background, there are several other vehicles, including cars, trucks, and motorcycles, adding to the bustling atmosphere of the urban setting.'
+
+        </div>
+        <script>
+            const title3 = document.getElementById("long_caption3");
+            var texts3 = [
+                "The image features a white and pink double-decker bus traveling down a city street. The bus has two levels, making it a double-decker vehicle. It is parked at the side of the road, likely waiting for passengers to board or disembark.  In the background, there are several other vehicles, including cars, trucks, and motorcycles, adding to the bustling atmosphere of the urban setting.'",
+                "The image features a large white and blue double-decker bus driving down a city street. The bus is positioned in the middle of the scene, occupying a significant portion of the image. There are several cars on the street, with one car located in front of the bus and another car behind it.   In addition to the vehicles, there are multiple people visible in the scene. Some of them are standing near the bus, while others are scattered along the street. A traffic light can be seen in the background, indicating that the bus is driving through an urban area with traffic regulations.",
+                "The image captures a moment on a city street where a white double-decker bus, adorned with a red and blue stripe, is parked. The bus is a First bus, as indicated by the logo on its side. The front of the bus displays a sign that reads \"Plymouth X80\", suggesting its route or destination. The bus is parked in front of a building, which has a sign that reads \"Plymouth City Centre\". This could indicate the location of the bus stop or the city center itself. In the background, there are trees adding a touch of nature to the urban setting. A car is also visible in the distance, parked further down the street.",
+              
+                "In the image, a man is standing at a podium in front of an auditorium filled with chairs. He appears to be giving a speech or presentation to an audience. Objectively existing and visible objects in the picture include the man at the podium, the audience seated in the auditorium, the chairs, and the podium itself. Additionally, there are potted plants placed around the room, contributing to the overall ambiance and creating a visually appealing setting for the event.",
+                "The image depicts a man standing at a podium in a large auditorium, giving a speech to a crowd of people. The audience is seated on numerous chairs that are arranged in rows throughout the room. The man at the podium is wearing a tie, indicating a formal setting.  The room is well-lit, with several lights illuminating the space. There are also a few potted plants placed around the room, adding some greenery to the environment. The overall atmosphere appears to be that of a professional gathering or conference.",
+                "In the image, a man is standing at a wooden podium in a large lecture hall. He is wearing a blue shirt and glasses, and he appears to be in the middle of a speech. The podium is equipped with a microphone, amplifying his voice to the audience. The audience is seated in rows of chairs, attentively facing the man and the podium. The room is well-lit, with several lights mounted on the ceiling. Adding a touch of nature to the indoor setting, there are several potted plants scattered around the room. The man, the podium, and the audience are the main elements in the image, creating a scene of a formal lecture or presentation."
+
+              ];
+
+            var images3 = [
+                "static/images/data/5.jpg",
+                "static/images/data/6.jpg"
+            ];
+
+            let currentIndex3 = 1;
+            let imagecount3 = 1
+
+            setInterval(() => {
+
+
+              title3.innerHTML= texts3[currentIndex3];   
+              currentIndex3++;
+
+              if (currentIndex3%3 === 1){
+                document.getElementById("data3").src = images3[imagecount3];
+                imagecount3++;
+              }
+
+
+              if (currentIndex3 === 6){
+                imagecount3 = 0;
+                currentIndex3 = 0;
+              }
+
+            }, 5000)
+        </script>
+        </p>
+        
+
+        </div>
+      
+      </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</section>
+
+<div class="div-1">
+<section class="section">
+  <!-- Paper Pipeline. -->
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Evaluation Dataset</h2>
+        <img src="static/images/eval_data.png"
+        width="800" height="200",id="eval_data">
+
+        <div class="subtitle has-text-centered">
+
+          <!-- <div style="display: flex; justify-content: center; text-align: justify; "> -->
+            <p style="font: size 20px; ; text-align: justify; ">
+              Existing short-text-image retrieval tasks primarily rely on short textual input.
+              We collected <strong>long text-image pairs</strong> from DCI, IIW, and ShareGPT4V datasets for constructing long-text-image retrieval evaluation task.
+            </p>
+          <!-- </div> -->
+          </div>
+
+    </div>
+  </div>
+
+</section>
+</div>
+
+
+<section class="section">
+  <div class="subtitle has-text-centered">
+    <h2 class="title is-3">Benefits and Drawbacks from Long Captions in Pre-training</h2>
+    <div class="hero-body">
+      <img src='static/images/motivation.jpg' width="1000" height="880",id="motivation">
+        <h2 class="subtitle has-text-centered">
+        <p style="font: size 20px; text-align: justify;">
+        <strong>The impacts of long <em>v.s.</em> short captions on image-language pre-training.</strong>
+        Training with short text-image pairs leaves certain tokens (<em>e.g.</em>, garden token) easily overshadowed by salient tokens (<em>e.g.</em>, castle token).
+        long captions-image pairs can help bring the overshadowed tokens back into the light.
+        </p>
+      </h2>
+    </div>
+
+    <div class="hero-body">
+      <img src='static/images/text_length.png' width="1000" height="880",id="motivation">
+        <h2 class="subtitle has-text-centered">
+        <p style="font: size 20px; text-align: justify; ;">
+          <strong>Directly learning with long captions improve the long-text understanding of pre-trained model, but lead to performance degradation in understanding short texts.</strong>
+          </p>
+        <p style="font: size 20px; text-align: justify;">
+          As the length of text (the number of sub-captions) increases, the performance of the pre-trained model on long-text-image retrieval
+          consistently improves and becomes stable (a). However, there is degradation in the retrieval task (b) and classification (c) when the
+          model is trained with longer text.
+        </p>
+      </h2>
+    </div>
+  </div>
+</section>
+
+<div class="div-1">
+<section class="section">
+  <!-- Paper Pipeline. -->
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Pipeline</h2>
+      <div class="publication-video">
+        <img src="static/images/figure2.jpg"
+        width="1200" height="880",id="pipeline">
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<br/>
+
+<section class="experiment">
+  <!-- Experiment. -->
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+    <h2 class="title is-3">Experiments</h2>
+    <h2 class="title is-4">Results on long-text-image retrieval tasks</h2>
+      <div class="publication-video">
+        <img src="static/images/long_results.png"
+        width="900" height="500",id="long_results">
+      </div>
+    </div>
+  </div>
+  <!-- <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+    <h2 class="title is-4">Results on short-text-image retrieval & image classification tasks</h2>
+      <div class="publication-video">
+        <img src="static/images/short_results.png"
+        width="1000" height="500",id="short_results">
+      </div>
+    </div>
+  </div> -->
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{LoTLIP2024,
+        title   = {LoTLIP: Improving Language-Image Pre-training for Long Text Understanding},
+        author  = {},
+        booktitle = {arXiv},
+        year    = {2024}
+    }
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website was modified from the <a
+            href="https://github.com/nerfies/nerfies.github.io">nerfies</a>. Appreaciate for sharing this perfect template!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
