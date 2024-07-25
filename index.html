@@ -390,27 +390,31 @@
     <h2 class="title is-3">Benefits and Drawbacks from Long Captions in Pre-training</h2>
     <div class="hero-body">
       <img src='static/images/motivation.jpg' width="1000" height="880",id="motivation">
-        <h2 class="subtitle has-text-centered">
+      <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
         <p style="font: size 20px; text-align: justify;">
         <strong>The impacts of long <em>v.s.</em> short captions on image-language pre-training.</strong>
         Training with short text-image pairs leaves certain tokens (<em>e.g.</em>, garden token) easily overshadowed by salient tokens (<em>e.g.</em>, castle token).
         long captions-image pairs can help bring the overshadowed tokens back into the light.
         </p>
-      </h2>
+      </div>
+      </div>
     </div>
 
     <div class="hero-body">
       <img src='static/images/text_length.png' width="1000" height="880",id="motivation">
-        <h2 class="subtitle has-text-centered">
-        <p style="font: size 20px; text-align: justify; ;">
-          <strong>Directly learning with long captions improve the long-text understanding of pre-trained model, but lead to performance degradation in understanding short texts.</strong>
-          </p>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+        <!-- <p style="font: size 20px; text-align: justify; ;">
+          Pre-traing with longer captions improve the long-text understanding of pre-trained model, but lead to performance degradation in understanding short texts.</strong>
+          </p> -->
         <p style="font: size 20px; text-align: justify;">
           As the length of text (the number of sub-captions) increases, the performance of the pre-trained model on long-text-image retrieval
-          consistently improves and becomes stable (a). However, there is degradation in the retrieval task (b) and classification (c) when the
+          consistently improves and becomes stable. However, there is degradation in the retrieval task and classification when the
           model is trained with longer text.
         </p>
-      </h2>
+      </div>
+    </div>
     </div>
   </div>
 </section>
